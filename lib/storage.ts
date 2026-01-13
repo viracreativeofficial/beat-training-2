@@ -50,3 +50,36 @@ export function clearAllSessions(): void {
     console.error("清除会话失败:", error);
   }
 }
+
+export function exportSessionsAsJSON(): string {
+  try {
+    const sessions = getAllSessions();
+    const exportData = {
+      exportDate: new Date().toISOString(),
+      totalSessions: sessions.length,
+      sessions: sessions,
+    };
+    return JSON.stringify(exportData, null, 2);
+  } catch (error) {
+    console.error("导出会话失败:", error);
+    return JSON.stringify({ error: "导出失败" }, null, 2);
+  }
+}
+
+export function downloadSessionsAsJSON(): void {
+  try {
+    const jsonData = exportSessionsAsJSON();
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `tempo-lab-sessions-${new Date().toISOString().split("T")[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("下载会话失败:", error);
+    alert("下载失败，请重试");
+  }
+}

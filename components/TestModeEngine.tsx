@@ -45,7 +45,7 @@ export default function TestModeEngine() {
         // 如果当前BPM下已经测试足够时间，增加BPM
         const elapsed = Date.now() - phaseStartTimeRef.current;
         if (elapsed >= stepDuration) {
-          const nextBPM = Math.min(120, currentTestBPM + stepBPM);
+          const nextBPM = Math.min(220, currentTestBPM + stepBPM);
           setCurrentTestBPM(nextBPM);
           setBPM(nextBPM);
           phaseStartTimeRef.current = Date.now();

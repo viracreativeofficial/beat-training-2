@@ -26,7 +26,7 @@ export default function MetronomeEngine() {
       setBPM(baseBPM);
 
       stepUpIntervalRef.current = setInterval(() => {
-        setBPM((prev) => Math.min(120, prev + stepAmount));
+        setBPM((prev) => Math.min(220, prev + stepAmount));
       }, intervalMinutes * 60 * 1000);
 
       return () => {

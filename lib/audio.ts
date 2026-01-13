@@ -22,7 +22,7 @@ export class MetronomeAudio {
   }
 
   setBPM(bpm: number): void {
-    this.bpm = Math.max(20, Math.min(120, bpm)); // 限制在20-120范围内
+    this.bpm = Math.max(20, Math.min(220, bpm)); // 限制在20-220范围内
     // 如果正在播放，需要重新启动以应用新的BPM
     if (this.isPlaying) {
       this.stop();

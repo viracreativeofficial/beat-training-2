@@ -99,7 +99,7 @@ export function MetronomeProvider({ children }: { children: React.ReactNode }) {
   const setBPM = useCallback((bpm: number | ((prev: number) => number)) => {
     setCurrentBPM((prev) => {
       const newBPM = typeof bpm === "function" ? bpm(prev) : bpm;
-      const clampedBPM = Math.max(20, Math.min(120, newBPM));
+      const clampedBPM = Math.max(20, Math.min(220, newBPM));
       logZoneChange(currentZone, clampedBPM);
       return clampedBPM;
     });

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { TrainingSession } from "@/types/session";
-import { getAllSessions, getRecentSessions, clearAllSessions } from "@/lib/storage";
+import { getAllSessions, getRecentSessions, clearAllSessions, downloadSessionsAsJSON } from "@/lib/storage";
 import AnalyticsChart from "@/components/AnalyticsChart";
 
 export default function Dashboard() {
@@ -26,6 +26,10 @@ export default function Dashboard() {
       clearAllSessions();
       loadSessions();
     }
+  };
+
+  const handleDownloadJSON = () => {
+    downloadSessionsAsJSON();
   };
 
   // 计算总体统计
@@ -91,12 +95,20 @@ export default function Dashboard() {
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">最近训练记录</h2>
             {sessions.length > 0 && (
-              <button
-                onClick={handleClearAll}
-                className="px-3 py-1 text-sm bg-red-600 rounded hover:bg-red-700 transition"
-              >
-                清除所有数据
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleDownloadJSON}
+                  className="px-3 py-1 text-sm bg-green-600 rounded hover:bg-green-700 transition"
+                >
+                  下载 JSON
+                </button>
+                <button
+                  onClick={handleClearAll}
+                  className="px-3 py-1 text-sm bg-red-600 rounded hover:bg-red-700 transition"
+                >
+                  清除所有数据
+                </button>
+              </div>
             )}
           </div>
           {sessions.length === 0 ? (

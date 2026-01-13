@@ -43,7 +43,7 @@ export default function ModeConfigPanel() {
                   <input
                     type="number"
                     min="20"
-                    max="120"
+                    max="220"
                     value={modeConfig.baseBPM || 40}
                     onChange={(e) =>
                       updateModeConfig({ baseBPM: parseInt(e.target.value) || 40 })
@@ -62,7 +62,7 @@ export default function ModeConfigPanel() {
                   <input
                     type="number"
                     min="20"
-                    max="120"
+                    max="220"
                     value={modeConfig.baseBPM || 40}
                     onChange={(e) =>
                       updateModeConfig({ baseBPM: parseInt(e.target.value) || 40 })
@@ -109,7 +109,7 @@ export default function ModeConfigPanel() {
                   <input
                     type="number"
                     min="20"
-                    max="120"
+                    max="220"
                     value={modeConfig.intervalHighBPM || 60}
                     onChange={(e) =>
                       updateModeConfig({ intervalHighBPM: parseInt(e.target.value) || 60 })
@@ -122,7 +122,7 @@ export default function ModeConfigPanel() {
                   <input
                     type="number"
                     min="20"
-                    max="120"
+                    max="220"
                     value={modeConfig.intervalLowBPM || 40}
                     onChange={(e) =>
                       updateModeConfig({ intervalLowBPM: parseInt(e.target.value) || 40 })
